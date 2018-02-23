@@ -4,7 +4,7 @@ var app            =        express();
 var path           =        require('path');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname,'Frontend')));	
+app.use(express.static(path.join(__dirname,'Frontend/Sample_ReactApp')));	
 app.set('port', (process.env.PORT || 5000))
 
 app.use(function(req, res, next) {
