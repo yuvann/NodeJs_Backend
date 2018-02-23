@@ -35,7 +35,7 @@ app.use('/api/models',require('./route/models.js'));
 //-------------------------------------------  Review Restaurant API'S --------------------------------------------
 
 app.use('/ReviewRestaurant/scripts', express.static(__dirname + '/Frontend/ReviewRestaurant/'));
-app.use('ReviewRestaurant/Images/', express.static(__dirname + '/Frontend/ReviewRestaurant/Images/'));
+app.use('/ReviewRestaurant/Images/', express.static(__dirname + '/Frontend/ReviewRestaurant/Images/'));
 
 app.get('/ReviewRestaurant',function(req,res){
   res.sendFile(path.join(__dirname, 'Frontend/ReviewRestaurant/index.html'));
