@@ -27,7 +27,7 @@ router.post('/create', function(req, res) {
 
 function handleErr(res,pool){
    console.log("DB ERR");
-   res.status(503).send({"error":"Server Error"});
+   res.status(503).send({"error":res});
    pool.end();
 }
 
