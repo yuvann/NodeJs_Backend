@@ -7,12 +7,31 @@ const connectionString = process.env.DATABASE_URL || 'postgres://hovyhhivbrdrii:
 
 router.post('/create', function(req, res) {
 
-  var {username , rating , comment }= req.body;
+  var {username , rating , comment ,id }= req.body;
   
   const pool = new Pool({
     connectionString: connectionString,
   })
-  pool.query('INSERT into review_restaurant values ($1,NOW(),$2,$3)',[username,comment, rating], (err, result) => {
+  pool.query('INSERT into review_restaurant values ($1,NOW(),$2,$3,$4)',[username,comment, rating ,id], (err, result) => {
+      if( err ) 
+	    handleErr(res,pool);
+      else 
+      {
+          res.status(200).send(result);
+          pool.end();
+      }   
+  });
+
+});
+
+router.post('/reviews', function(req, res) {
+
+  var { id }= req.body;
+  
+  const pool = new Pool({
+    connectionString: connectionString,
+  })
+  pool.query('SELECT * from review_restaurant where restaurant_id == $1',[id], (err, result) => {
       if( err ) 
 	    handleErr(res,pool);
       else 
