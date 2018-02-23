@@ -12,7 +12,7 @@ router.post('/create', function(req, res) {
   const pool = new Pool({
     connectionString: connectionString,
   })
-  console.log(JSON.stringofy(req.body))
+  console.log(JSON.stringify(req.body))
   pool.query('INSERT into review_restaurant values ($1,NOW(),$2,$3)',[username,comment, rating], (err, result) => {
       if( err ) 
 	    handleErr(res,pool);
