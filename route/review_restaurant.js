@@ -12,7 +12,6 @@ router.post('/create', function(req, res) {
   const pool = new Pool({
     connectionString: connectionString,
   })
-  console.log(JSON.stringify(req.body))
   pool.query('INSERT into review_restaurant values ($1,NOW(),$2,$3)',[username,comment, rating], (err, result) => {
       if( err ) 
 	    handleErr(res,pool);
@@ -27,7 +26,7 @@ router.post('/create', function(req, res) {
 
 function handleErr(res,pool){
    console.log("DB ERR");
-   res.status(503).send(JSON.stringify({"error":JSON.stringify(res)}));
+   res.status(503).send( {"error":"SEVER ERROR , Try Again Please "});
    pool.end();
 }
 
