@@ -6,6 +6,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'Frontend')));	
 app.set('port', (process.env.PORT || 5000))
+
+
+app.get('/', function (req, res) {
+  res.send('Welcome');
+})
+
+// ---------------------------------------------- Sample App API'S -----------------------------------------------
+
 app.use('/sample/scripts', express.static(__dirname + '/Frontend/Sample_ReactApp/'));
 
 app.use(function(req, res, next) {
@@ -14,9 +22,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/', function (req, res) {
-  res.send('/Sample         -> React Sample App with HTTP Calls<br>	    /ReviewRestaurant -> View Hotels around your area , Review them , Taste it ( React JS )')
-})
 app.get('/Sample',function(req,res){
   res.sendFile(path.join(__dirname, 'Frontend/Sample_ReactApp/index.html'));
 });
@@ -24,6 +29,8 @@ app.get('/Sample',function(req,res){
 app.use('/api/categories',require('./route/categories.js'));
 
 app.use('/api/models',require('./route/models.js'));
+
+//----------------------------------------------------  END -------------------------------------------------------
 
 var server = app.listen(app.get('port'), function () {
    console.log("App is listening at localhost:"+app.get('port'));
