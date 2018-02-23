@@ -7,12 +7,12 @@ const connectionString = process.env.DATABASE_URL || 'postgres://hovyhhivbrdrii:
 
 router.post('/create', function(req, res) {
 
-  var {username , rating , comment ,id }= req.body;
+  var {username , rating , comment ,id ,date }= req.body;
   
   const pool = new Pool({
     connectionString: connectionString,
   })
-  pool.query('INSERT into review_restaurant values ($1,$5,$2,$3,$4)',[username,comment, rating ,id,(new Date())], (err, result) => {
+  pool.query('INSERT into review_restaurant values ($1,$5,$2,$3,$4)',[username,comment, rating ,id,date], (err, result) => {
       if( err ) 
 	    handleErr(res,pool);
       else 
