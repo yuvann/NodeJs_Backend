@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
   res.send('/Sample         -> React Sample App with HTTP Calls<br>	    /ReviewRestaurant -> View Hotels around your area , Review them , Taste it ( React JS )')
 })
 app.get('/Sample',function(req,res){
-  res.sendFile('Sample/index.html');
+  res.sendFile('Sample_ReactApp/index.html');
 });
 
 app.use('/api/categories',require('./route/categories.js'));
