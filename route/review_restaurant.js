@@ -12,14 +12,14 @@ router.post('/create', function(req, res) {
   const pool = new Pool({
     connectionString: connectionString,
   })
-  var respObj = {} ;
+  console.log(JSON.stringofy(req.body))
   pool.query('INSERT into review_restaurant values ($1,NOW(),$2,$3)',[username,comment, rating], (err, result) => {
       if( err ) 
 	    handleErr(res,pool);
       else 
       {
           res.status(200).send(result);
-//           pool.end();
+          pool.end();
       }   
   });
 
@@ -27,8 +27,8 @@ router.post('/create', function(req, res) {
 
 function handleErr(res,pool){
    console.log("DB ERR");
-   res.status(503).send({"error":res});
-//    pool.end();
+   res.status(503).send(JSON.stringify({"error":JSON.stringify(res)}));
+   pool.end();
 }
 
 module.exports = router;
