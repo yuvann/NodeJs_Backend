@@ -19,7 +19,7 @@ router.post('/create', function(req, res) {
       else 
       {
           res.status(200).send(result);
-          pool.end();
+//           pool.end();
       }   
   });
 
@@ -28,7 +28,7 @@ router.post('/create', function(req, res) {
 function handleErr(res,pool){
    console.log("DB ERR");
    res.status(503).send({"error":res});
-   pool.end();
+//    pool.end();
 }
 
 module.exports = router;
