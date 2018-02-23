@@ -31,7 +31,7 @@ router.post('/reviews', function(req, res) {
   const pool = new Pool({
     connectionString: connectionString,
   })
-  pool.query('SELECT * from review_restaurant where restaurant_id == $1',[id], (err, result) => {
+  pool.query('SELECT * from review_restaurant where restaurant_id = $1',[id], (err, result) => {
       if( err ) 
 	    handleErr(res,pool);
       else 
