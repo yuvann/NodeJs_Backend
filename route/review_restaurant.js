@@ -14,7 +14,7 @@ router.post('/create', function(req, res) {
   })
   pool.query('INSERT into review_restaurant values ($1,$5,$2,$3,$4)',[username,comment, rating ,id,date], (err, result) => {
       if( err ) 
-	    handleErr(res,pool);
+	    handleErr(res,pool,err);
       else 
       {
           res.status(200).send(result);
@@ -33,7 +33,7 @@ router.post('/reviews', function(req, res) {
   })
   pool.query('SELECT * from review_restaurant where restaurant_id = $1',[id], (err, result) => {
       if( err ) 
-	    handleErr(res,pool);
+	    handleErr(res,pool,err);
       else 
       {
           res.status(200).send(result);
@@ -43,9 +43,9 @@ router.post('/reviews', function(req, res) {
 
 });
 
-function handleErr(res,pool){
-   console.log(JSON.stringify(res));
-   res.status(503).send( {"error":"SEVER ERROR , Try Again Please ","value":res});
+function handleErr(res,pool,err){
+   console.log(JSON.stringify(err));
+   res.status(503).send( {"error":"SEVER ERROR , Try Again Please ","value":err});
    pool.end();
 }
 
