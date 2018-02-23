@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 5000))
 
 
 app.get('/', function (req, res) {
-  res.send('Welcome');
+  res.sendFile(path.join(__dirname, 'Frontend/index.html'));
 })
 
 // ---------------------------------------------- Sample App API'S -----------------------------------------------
