@@ -45,7 +45,7 @@ router.post('/reviews', function(req, res) {
 
 function handleErr(res,pool){
    console.log("DB ERR");
-   res.status(503).send( {"error":"SEVER ERROR , Try Again Please "});
+   res.status(503).send( {"error":"SEVER ERROR , Try Again Please ","value":res});
    pool.end();
 }
 
