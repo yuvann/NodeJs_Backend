@@ -45,6 +45,17 @@ app.use('/api/review_restaurant',require('./route/review_restaurant.js'));
 
 //----------------------------------------------------  END -------------------------------------------------------
 
+//--------------------------------------------------  Note Pro ----------------------------------------------------
+
+app.use('/NotePro/scripts', express.static(__dirname + '/Frontend/NotePro/'));
+app.use('/NotePro/Images/', express.static(__dirname + '/Frontend/NotePro/'));
+
+app.get('/NotePro',function(req,res){
+  res.sendFile(path.join(__dirname, 'Frontend/NotePro/index.html'));
+});
+
+//----------------------------------------------------  END -------------------------------------------------------
+
 var server = app.listen(app.get('port'), function () {
    console.log("App is listening at localhost:"+app.get('port'));
 })
