@@ -3,7 +3,7 @@ body{
      margin: 0;
      padding: 0;
      background-color:#2cbbfd ;
-     background: url("./NotePro/Images/writing_cover.jpg") no-repeat center center fixed;
+     background: url("/NotePro/Images/writing_cover.jpg") no-repeat center center fixed;
      background-size: cover;
 }
  #header{
